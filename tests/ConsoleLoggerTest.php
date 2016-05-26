@@ -5,7 +5,7 @@
 
 namespace Phrity\Log\Test;
 
-use \Phrity\Log\Logger\Console;
+use \Phrity\Log\ConsoleLogger;
 use \Symfony\Component\Console\Output\OutputInterface;
 
 class ConsoleLoggerTest extends \PHPUnit_Framework_TestCase
@@ -13,20 +13,20 @@ class ConsoleLoggerTest extends \PHPUnit_Framework_TestCase
 
     public function testLogLevels()
     {
-        $logger = new Console(OutputInterface::VERBOSITY_QUIET);
-        $logger->critical("a message");
-        $logger->emergency("a message");
-        $logger->alert("a message");
-        $logger->error("a message");
-        $logger->warning("a message");
-        $logger->notice("a message");
-        $logger->info("a message");
-        $logger->debug("a message");
+        $logger = new ConsoleLogger(OutputInterface::VERBOSITY_QUIET);
+        $logger->critical("a critical message");
+        $logger->emergency("an emergency message");
+        $logger->alert("an alert message");
+        $logger->error("an error message");
+        $logger->warning("a warning message");
+        $logger->notice("a notice message");
+        $logger->info("an info message");
+        $logger->debug("a debug message");
     }
 
     public function testContext()
     {
-        $logger = new Console(OutputInterface::VERBOSITY_QUIET);
-        $logger->debug("a message", ['foo' => 'bar']);
+        $logger = new ConsoleLogger(OutputInterface::VERBOSITY_QUIET);
+        $logger->debug("a {foo} message", ['foo' => 'bar']);
     }
 }
