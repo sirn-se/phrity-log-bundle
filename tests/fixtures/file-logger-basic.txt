@@ -1,0 +1,8 @@
+a critical message
+an emergency message
+an alert message
+an error message
+a warning message
+a notice message
+an info message
+a debug message

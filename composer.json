@@ -1,6 +1,12 @@
 {
   "name": "phrity/log-bundle",
   "description": "PSR-compatible loggers and related utilities",
+  "authors": [
+    {
+      "name": "Sören Jensen",
+      "email": "sirn@sirn.se"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "": "src/"
@@ -18,6 +24,7 @@
   },
   "require-dev": {
     "phpunit/phpunit": "4.*",
+    "satooshi/php-coveralls": "1.0.*",
     "squizlabs/php_codesniffer": "2.*"
   }
 }
