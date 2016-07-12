@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/sirn-se/phrity-log-bundle.png)](https://travis-ci.org/sirn-se/phrity-log-bundle)
-
+[![Build Status](https://travis-ci.org/sirn-se/phrity-log-bundle.svg?branch=master)](https://travis-ci.org/sirn-se/phrity-log-bundle)
 # Log bundle
 
 This library utilizes the [PSR-3 compatible](https://github.com/php-fig/log) interface.

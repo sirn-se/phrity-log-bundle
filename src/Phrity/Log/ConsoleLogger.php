@@ -82,7 +82,6 @@ class ConsoleLogger extends AbstractLogger implements LoggerInterface
 
     private function setStyle($verbosity = null)
     {
-        $this->console->setVerbosity($default_verbosity);
         $input = new ArgvInput();
 
         // Set decoration
