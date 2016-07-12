@@ -2,6 +2,7 @@
 all: deps-install
 
 
+# DEPENDENCY MANAGEMENT
 # Updates dependencies accoring to lock file
 deps-install: composer.phar
 	./composer.phar --no-interaction install
@@ -15,16 +16,26 @@ deps-update: composer.phar
 deps-prod: composer.phar clear-assets
 	./composer.phar --no-interaction install --no-dev --optimize-autoloader
 
-cs-check: composer.phar
+
+# TESTS AND REPORTS
+# Code standard check
+cs-check: composer.lock
 	./vendor/bin/phpcs --standard=PSR1,PSR2 --encoding=UTF-8 --report=full --colors src tests
 
-test: composer.phar
+# Run tests
+test: composer.lock
 	./vendor/bin/phpunit tests/
 
-coverage: composer.phar
+# Run tests with coverage report
+coverage: composer.lock
 	./vendor/bin/phpunit --coverage-clover build/logs/clover.xml tests/
-	./vendor/bin/coveralls merge --clover build/logs/clover.xml build/cov
 
-# Installs and/or updates composer.phar
+
+# INITIAL INSTALL
+# Ensures composer is installed
 composer.phar:
 	curl -sS https://getcomposer.org/installer | php
+
+# Ensures composer is installed and dependencies loaded
+composer.lock: composer.phar
+	./composer.phar --no-interaction install
