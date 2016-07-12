@@ -7,7 +7,7 @@ php:
   - 5.4
 
 before_script:
-  - make install
+  - make deps-install
 
 script:
   - make coverage cs-check
