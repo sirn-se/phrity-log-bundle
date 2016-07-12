@@ -23,7 +23,7 @@ test: composer.phar
 
 coverage: composer.phar
 	./vendor/bin/phpunit --coverage-clover build/logs/clover.xml tests/
-	./vendor/bin/phpcov merge --clover build/logs/clover.xml build/cov
+	./vendor/bin/coveralls merge --clover build/logs/clover.xml build/cov
 
 # Installs and/or updates composer.phar
 composer.phar:
