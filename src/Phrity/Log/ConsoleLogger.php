@@ -53,6 +53,7 @@ class ConsoleLogger extends AbstractLogger implements LoggerInterface
             case LogLevel::DEBUG:
                 return OutputInterface::VERBOSITY_DEBUG;
         }
+        return OutputInterface::VERBOSITY_NORMAL;
     }
 
     private function formatMessageByLevel($level, $message)
@@ -73,6 +74,7 @@ class ConsoleLogger extends AbstractLogger implements LoggerInterface
             case LogLevel::DEBUG:
                 return"<fg=yellow>{$message}</>";
         }
+        return "{$message}";
     }
 
     private function isCli()

@@ -94,6 +94,5 @@ class FileLogger extends AbstractLogger implements LoggerInterface
     {
         $this->disabled = true;
         trigger_error($error_msg, E_USER_ERROR);
-        return;
     }
 }

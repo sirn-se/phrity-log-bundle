@@ -27,13 +27,9 @@ test: composer.lock
 	./vendor/bin/phpunit
 
 # Run tests with clover coverage report
-coverage-clover: composer.lock
+coverage: composer.lock
 	./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 	./vendor/bin/coveralls -v
-
-# Run tests with html coverage report
-coverage-html: composer.lock
-	./vendor/bin/phpunit --coverage-html build/html
 
 # INITIAL INSTALL
 # Ensures composer is installed

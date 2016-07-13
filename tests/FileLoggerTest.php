@@ -76,6 +76,7 @@ class FileLoggerTest extends \PHPUnit_Framework_TestCase
     public function testInvalidFile()
     {
         $logger = new FileLogger(array());
+        $logger->alert("an alert message");
         $this->assertEmpty($logger->getUsedFiles());
     }
 
@@ -91,6 +92,7 @@ class FileLoggerTest extends \PHPUnit_Framework_TestCase
 
         $logger = new FileLogger("{$this->dir}/failure.log");
         $logger->alert("an alert message");
+        $logger->debug("a debug message");
         $this->assertEmpty($logger->getUsedFiles());
 
         $override_mkdir = null;
@@ -108,6 +110,7 @@ class FileLoggerTest extends \PHPUnit_Framework_TestCase
 
         $logger = new FileLogger("{$this->dir}/failure.log");
         $logger->alert("an alert message");
+        $logger->debug("a debug message");
         $this->assertEmpty($logger->getUsedFiles());
         $override_is_dir = null;
     }
@@ -124,6 +127,7 @@ class FileLoggerTest extends \PHPUnit_Framework_TestCase
 
         $logger = new FileLogger("{$this->dir}/failure.log");
         $logger->alert("an alert message");
+        $logger->debug("a debug message");
         $this->assertEmpty($logger->getUsedFiles());
 
         $override_file_put_contents = null;

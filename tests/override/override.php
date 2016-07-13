@@ -33,3 +33,21 @@ function file_put_contents($filename, $data, $flags)
     }
     return \file_put_contents($filename, $data, $flags);
 }
+
+function php_sapi_name()
+{
+    global $override_php_sapi_name;
+    if (!is_null($override_php_sapi_name)) {
+        return $override_php_sapi_name;
+    }
+    return \php_sapi_name();
+}
+
+function defined($name)
+{
+    global $override_defined;
+    if (!is_null($override_defined)) {
+        return $override_defined;
+    }
+    return \defined($name);
+}
