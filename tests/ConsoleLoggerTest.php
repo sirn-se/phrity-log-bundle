@@ -13,7 +13,7 @@ class ConsoleLoggerTest extends \PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
-        // Include to enable overwriting of PHP file functions.
+        // Include to enable overwriting of PHP functions.
         require_once('override/override.php');
     }
 

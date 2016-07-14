@@ -36,10 +36,13 @@ class FileLogger extends AbstractLogger implements LoggerInterface
 
         // Ensure valid directory structure
         $this->ensureFilepath($real_filepath);
+        if ($this->disabled) {
+            return;
+        }
 
         // Write message to file
         $interpolated = $this->interpolate($message, $context) . "\n";
-        if (file_put_contents($real_filepath, $interpolated, FILE_APPEND | LOCK_EX)  === false) {
+        if (file_put_contents($real_filepath, $interpolated, FILE_APPEND | LOCK_EX) === false) {
             return $this->disable("Failed writing to log file '{$real_filepath}'");
         }
 

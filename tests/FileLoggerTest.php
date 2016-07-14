@@ -11,7 +11,7 @@ class FileLoggerTest extends \PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
-        // Include to enable overwriting of PHP file functions.
+        // Include to enable overwriting of PHP functions.
         require_once('override/override.php');
     }
 
@@ -92,7 +92,6 @@ class FileLoggerTest extends \PHPUnit_Framework_TestCase
 
         $logger = new FileLogger("{$this->dir}/failure.log");
         $logger->alert("an alert message");
-        $logger->debug("a debug message");
         $this->assertEmpty($logger->getUsedFiles());
 
         $override_mkdir = null;
@@ -110,7 +109,6 @@ class FileLoggerTest extends \PHPUnit_Framework_TestCase
 
         $logger = new FileLogger("{$this->dir}/failure.log");
         $logger->alert("an alert message");
-        $logger->debug("a debug message");
         $this->assertEmpty($logger->getUsedFiles());
         $override_is_dir = null;
     }
@@ -127,9 +125,27 @@ class FileLoggerTest extends \PHPUnit_Framework_TestCase
 
         $logger = new FileLogger("{$this->dir}/failure.log");
         $logger->alert("an alert message");
-        $logger->debug("a debug message");
         $this->assertEmpty($logger->getUsedFiles());
 
         $override_file_put_contents = null;
+    }
+
+    public function testDisabling()
+    {
+        // Override mkdir function, return false
+        global $override_mkdir;
+        $override_mkdir = false;
+
+        // Override trigger_error function, return true
+        global $override_trigger_error;
+        $override_trigger_error = true;
+
+        $logger = new FileLogger("{$this->dir}/failure.log");
+        $logger->alert("an alert message");
+        $logger->debug("a debug message");
+        $this->assertEmpty($logger->getUsedFiles());
+
+        $override_mkdir = null;
+        $override_trigger_error = null;
     }
 }

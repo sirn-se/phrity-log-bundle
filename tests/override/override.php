@@ -51,3 +51,12 @@ function defined($name)
     }
     return \defined($name);
 }
+
+function trigger_error($error_msg, $error_type = E_USER_NOTICE)
+{
+    global $override_trigger_error;
+    if (!is_null($override_trigger_error)) {
+        return $override_trigger_error;
+    }
+    return \trigger_error($error_msg, $error_type);
+}
